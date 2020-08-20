@@ -1,5 +1,6 @@
 import codecs
 from os import environ
+from os.path import join, abspath, dirname
 
 import yaml
 # Normally you should not import ANYTHING from Django directly
@@ -46,3 +47,8 @@ LOGGING['handlers']['local'] = {
 # It's probably ok to search your DB for push queues every minute (or even longer) on a
 # development instance, rather than the brief prod timespan.
 CONSUMER_DELAY = 60
+
+#####################################################################
+# Lastly, see if the developer has any local overrides.
+if os.path.isfile(join(dirname(abspath(__file__)), 'private.py')):
+    from .private import *  # pylint: disable=import-error
