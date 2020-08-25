@@ -13,7 +13,7 @@ if STATIC_URL.startswith('/'):
 urlpatterns = [
     url(r'^xqueue/', include('queue.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^{}/(?P<path>.*)$'.format(STATIC_URL), serve, {
+    url(r'^{}(?P<path>.*)$'.format(STATIC_URL), serve, {
         'document_root': settings.STATIC_ROOT,
     }),
 ]
