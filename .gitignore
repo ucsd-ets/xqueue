@@ -13,4 +13,8 @@ reports
 .idea/
 build/
 src/
+static/
+staticfiles/
 xqueue.sqlite
+
+private.py

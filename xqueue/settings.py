@@ -111,10 +111,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    # comment the next line to disable the admin:
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'django.contrib.staticfiles',
     'queue',
     'release_util',
     'storages',
@@ -164,3 +165,22 @@ CLOUDWATCH_QUEUE_COUNT_METRICS = {
         'test-pull': 100
     }
 }
+
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+STATIC_ROOT = os.path.join(ROOT_PATH, 'staticfiles')
+STATIC_URL = '/static/'
